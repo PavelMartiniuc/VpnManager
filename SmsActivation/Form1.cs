@@ -217,8 +217,10 @@ namespace SmsActivation
 
         private void StartRemoteDesctop()
         {
+            var config = System.Configuration.ConfigurationManager.AppSettings;
+            string remotePath = config["RemoteDesktopPath"];
             _remoteDesctopProc = new Process();
-            _remoteDesctopProc.StartInfo.FileName = "C:\\Users\\pavel.martiniuc\\AppData\\Local\\Apps\\Remote Desktop\\msrdcw.exe";
+            _remoteDesctopProc.StartInfo.FileName = remotePath;
             _remoteDesctopProc.StartInfo.Arguments = "-n";
             _remoteDesctopProc.StartInfo.WindowStyle = ProcessWindowStyle.Normal;
             _remoteDesctopProc.Start();
